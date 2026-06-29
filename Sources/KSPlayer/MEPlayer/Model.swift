@@ -58,7 +58,7 @@ public protocol ObjectQueueItem {
     var size: Int32 { get set }
 }
 
-extension ObjectQueueItem {
+public extension ObjectQueueItem {
     var seconds: TimeInterval { cmtime.seconds }
     var cmtime: CMTime { timebase.cmtime(for: timestamp) }
 }
@@ -180,7 +180,7 @@ public struct Timebase {
     public let den: Int32
     func getPosition(from seconds: TimeInterval) -> Int64 { Int64(seconds * TimeInterval(den) / TimeInterval(num)) }
 
-    func cmtime(for timestamp: Int64) -> CMTime { CMTime(value: timestamp * Int64(num), timescale: den) }
+    public func cmtime(for timestamp: Int64) -> CMTime { CMTime(value: timestamp * Int64(num), timescale: den) }
 }
 
 extension Timebase {
